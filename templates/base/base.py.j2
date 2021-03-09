@@ -3,12 +3,14 @@ config = dict(
     # Set to stg or prod if running in the Fedora Infrastructure.
     environment="{{ fedmsg_env }}",
 
+    topic_prefix="org.centos",
+
     # Most hosts will be "false" here indicating that if they publish messages,
     # they will passively bind to ports and have other consuming services
     # actively connect to them.  If this flag is set to True, then the service
     # will actively connect out to a fedmsg-relay to have its messages forwarded
     # on.
-    active={{ fedmsg_active | bool }},
+    active=False,
 
     {% if fedmsg_cert_prefix is defined %}
     # Most fedmsg enabled services dynamically guess their cert_prefix by
