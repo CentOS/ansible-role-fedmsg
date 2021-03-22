@@ -1,5 +1,19 @@
 # Defaults tasks for role fedmsg
 ---
+- name: Add the buildtools repo if needed
+  template:
+    src: buildtools.repo.j2
+    dest: /etc/yum.repos.d/buildtools.repo
+  tags:
+    - repo
+
+- name: Adding repo gpg key if needed
+  copy: 
+    src: files/RPM-GPG-KEY-CentOS-Infra 
+    dest: /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-Infra
+  tags:
+    - repo
+
 - name: Install fedmsg packages packages
   yum:
     name:
@@ -41,7 +55,6 @@
     - base.py
     - endpoints.py
   notify:
-    - Reload apache
     - Restart fedmsg-hub
   
 - name: Enable the websocket server if we should
