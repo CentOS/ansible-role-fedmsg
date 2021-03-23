@@ -1,6 +1,6 @@
 # Defaults variables for role fedmsg
 fedmsg_hub_bin: /usr/bin/fedmsg-hub
-fedmsg_env: prod
+fedmsg_env: "{{ centos_infra_env | default('prod') }}"
 fedmsg_log_level: INFO
 fedmsg_hub_memory_limit_mb: 0
 fedmsg_hub_auto_restart: false
@@ -9,3 +9,4 @@ fedmsg_websocket_port: 9919
 fedmsg_status_directory: /var/run/fedmsg/status
 fedmsg_datagrepper_url: https://apps.fedoraproject.org/datagrepper/raw
 fedmsg_post_init_sleep: 1
+fedmsg_buildtools_repo_gpgkey: "{{ kojid_buildtools_repo_gpgkey | default('') }}"
