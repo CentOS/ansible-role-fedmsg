@@ -26,11 +26,6 @@ provisioner:
   inventory:
     group_vars:
       all:
-        psql_hba_conf_file: ${MOLECULE_PROJECT_DIRECTORY}/molecule/files/pg_hba.conf
-        mbs_mq_cert: ${MOLECULE_PROJECT_DIRECTORY}/molecule/files/cert.pem
-        mbs_mq_key: ${MOLECULE_PROJECT_DIRECTORY}/molecule/files/key.pem
-        mbs_mq_ca: ${MOLECULE_PROJECT_DIRECTORY}/molecule/files/ca.pem
-        mbs_default_modules_dir: ${MOLECULE_PROJECT_DIRECTORY}/molecule/files/default-modules
-        yum_buildtools_repo: ${MOLECULE_PROJECT_DIRECTORY}/molecule/files/buildtools.repo
+        fedmsg_env: stg
 verifier:
   name: ansible
